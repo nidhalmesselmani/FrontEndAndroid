@@ -52,9 +52,28 @@ public class User {
     public User() {
     }
 
-    public User(int id, String username,String first_name) {
+    public User(int id,
+                String username,
+                String first_name,
+                String last_name,
+                String mail,
+                String phone,
+                String date_of_birth,
+                String status,
+                String place_of_birth,
+                String cin
+                ) {
+
         this.id = id;
         this.username = username;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.mail = mail;
+        this.phone = phone;
+        this.date_of_birth = date_of_birth;
+        this.status = status;
+        this.place_of_birth = place_of_birth;
+        this.cin = cin;
     }
 
     public int getId() {
@@ -121,6 +140,20 @@ public class User {
         this.mail = date_of_birth;
     }
 
+    public String get_place_of_birth() {
+        return place_of_birth;
+    }
 
+    public void set_place_of_birth(String place_of_birth) {
+        this.place_of_birth = place_of_birth;
+    }
+
+    public String get_cin() {
+        return cin;
+    }
+
+    public void set_cin(String cin) {
+        this.cin = cin;
+    }
 
 }

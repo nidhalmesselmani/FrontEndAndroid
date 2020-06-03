@@ -9,4 +9,8 @@ public class APIUtils {
     public static PlaceService getPlaceService(){
         return RetrofitClient.getClient(API_URL).create(PlaceService.class);
     }
+
+    public static UserService getUserService(){
+        return RetrofitClient.getClient(API_URL).create(UserService.class);
+    }
 }
