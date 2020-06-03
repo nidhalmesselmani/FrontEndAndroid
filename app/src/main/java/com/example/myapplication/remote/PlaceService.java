@@ -14,6 +14,9 @@ import retrofit2.http.Path;
 
 
 public interface PlaceService {
-    @GET("places/")
+    @GET("getLocations/")
     Call<List<Place>> getPlaces();
+
+    @POST("createLocation/")
+    Call<Place> addUser(@Body Place place);
 }
