@@ -18,5 +18,8 @@ public interface PlaceService {
     Call<List<Place>> getPlaces();
 
     @POST("createLocation/")
-    Call<Place> addUser(@Body Place place);
+    Call<Place> addPlace(@Body Place place);
+
+    @GET("getLocations/")
+    Call<List<Place>> getPlacesByCityId();
 }
