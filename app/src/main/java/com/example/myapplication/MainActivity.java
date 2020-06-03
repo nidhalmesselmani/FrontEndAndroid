@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     public void onSubmit(View view) {
 
         Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-        intent.putExtra("cin", inputCin.getText().toString());
+        intent.putExtra("cin",Integer.valueOf(inputCin.getText().toString()));
         startActivity(intent);
     }
 }
