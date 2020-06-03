@@ -22,7 +22,7 @@ public interface UserService {
     @GET("user_by_cin/")
     Call<User> user_by_cin(@Query("cin") int cin);
 
-    @POST("add/")
+    @POST("users/")
     Call<User> addUser(@Body User user);
 
     @PUT("update/{id}")
