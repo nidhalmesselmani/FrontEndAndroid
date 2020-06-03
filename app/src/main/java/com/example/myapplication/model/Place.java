@@ -8,16 +8,41 @@ public class Place {
     @Expose
     private int id;
 
-    @SerializedName("title")
+    @SerializedName("coordinates")
     @Expose
-    private String title;
+    private String coordinates;
+
+    @SerializedName("contaminated")
+    @Expose
+    private Character contaminated;
+
+    @SerializedName("city_id")
+    @Expose
+    private Integer cityId;
+
+    @SerializedName("name")
+    @Expose
+    private String name;
+
+    @SerializedName("number_of_visits")
+    @Expose
+    private Integer numberOfVisits;
+
+    @SerializedName("number_of_reports")
+    @Expose
+    private Integer numberOfReports;
 
     public Place() {
     }
 
-    public Place(int id, String title) {
+    public Place(int id, String coordinates, Character contaminated, Integer cityId, String name, Integer numberOfVisits, Integer numberOfReports) {
         this.id = id;
-        this.title = title;
+        this.coordinates = coordinates;
+        this.contaminated = contaminated;
+        this.cityId = cityId;
+        this.name = name;
+        this.numberOfVisits = numberOfVisits;
+        this.numberOfReports = numberOfReports;
     }
 
     public int getId() {
@@ -28,11 +53,51 @@ public class Place {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getCoordinates() {
+        return coordinates;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setCoordinates(String coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public Character getContaminated() {
+        return contaminated;
+    }
+
+    public void setContaminated(Character contaminated) {
+        this.contaminated = contaminated;
+    }
+
+    public Integer getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(Integer cityId) {
+        this.cityId = cityId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getNumberOfVisits() {
+        return numberOfVisits;
+    }
+
+    public void setNumberOfVisits(Integer numberOfVisits) {
+        this.numberOfVisits = numberOfVisits;
+    }
+
+    public Integer getNumberOfReports() {
+        return numberOfReports;
+    }
+
+    public void setNumberOfReports(Integer numberOfReports) {
+        this.numberOfReports = numberOfReports;
     }
 }
