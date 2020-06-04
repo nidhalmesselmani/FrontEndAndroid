@@ -18,8 +18,11 @@ import retrofit2.http.Query;
 
 
 public interface PlaceService {
-    @GET("getLocations/")
+    @GET("places/")
     Call<List<Place>> getPlaces();
+
+    @GET("getContanimatedPlaces/")
+    Call<List<Place>> getContanimatedPlaces();
 
     @GET("place/")
     Call<Place> getPlace(@Query("place_id") int place_id);

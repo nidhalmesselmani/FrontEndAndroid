@@ -37,11 +37,19 @@ public class PlaceAdapter  extends ArrayAdapter<Place>{
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.list_place, parent, false);
 
-        TextView txtUserId = (TextView) rowView.findViewById(R.id.txtUserId);
-        //TextView txtUsername = (TextView) rowView.findViewById(R.id.txtUsername);
+        //TextView txtUserId = (TextView) rowView.findViewById(R.id.txtUserId);
+        TextView placeTxt = (TextView) rowView.findViewById(R.id.place);
 
-        txtUserId.setText(String.format("#ID: %d", places.get(pos).getId()));
-        //txtUsername.setText(String.format("USER NAME: %s", users.get(pos).getName()));
+       // txtUserId.setText(String.format("#ID: %d", places.get(pos).getId()));
+        if(places.get(pos).getContaminated() == 'Y'){
+            placeTxt.setText(String.format("%s is contaminated", places.get(pos).getName()));
+        }
+        else if (places.get(pos).getContaminated() == 'S') {
+            placeTxt.setText(String.format("%s is probably contaminated", places.get(pos).getName()));
+        }
+
+
+
 /*
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override

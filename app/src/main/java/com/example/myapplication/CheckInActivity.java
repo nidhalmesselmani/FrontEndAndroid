@@ -72,7 +72,6 @@ public class CheckInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkin);
 
-
         first_name_txt = (TextView) findViewById(R.id.first_name);
         governates_spinner = (Spinner) findViewById(R.id.governates_spinner);
         cities_spinner = (Spinner) findViewById(R.id.cities_spinner);

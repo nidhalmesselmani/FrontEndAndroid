@@ -48,6 +48,14 @@
             </intent-filter>
         </activity>
 
+        <!--Add Other activities like this-->
+        <activity android:name=".OverviewActivity" >
+            <!--Default Intent Filter-->
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.WRITE_CONTACTS"/>

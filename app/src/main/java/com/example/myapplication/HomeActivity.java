@@ -76,4 +76,11 @@ public class HomeActivity  extends AppCompatActivity {
         intent.putExtra("cin",this.current_user.get_cin());
         startActivity(intent);
     }
+
+    public void GoOverView(View view) {
+
+        Intent intent = new Intent(HomeActivity.this, OverviewActivity.class);
+        intent.putExtra("cin",this.current_user.get_cin());
+        startActivity(intent);
+    }
 }
