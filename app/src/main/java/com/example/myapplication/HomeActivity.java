@@ -38,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
 
         int duration = Toast.LENGTH_SHORT;
 
-        Toast toast = Toast.makeText(context,  getIntent().getExtras().getInt("cin"), duration);
+        Toast toast = Toast.makeText(context,  getIntent().getExtras().getString("cin"), duration);
         toast.show();
     }
 
