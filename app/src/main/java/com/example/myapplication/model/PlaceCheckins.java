@@ -27,8 +27,8 @@ public class PlaceCheckins {
     public PlaceCheckins(){
     }
 
-    public PlaceCheckins(int id, int user_id, int place_id, String checkin, String checkout) {
-        this.id = id;
+    public PlaceCheckins(/*int id*/ int user_id, int place_id, String checkin, String checkout) {
+        // this.id = id;
         this.user_id = user_id;
         this.place_id = place_id;
         this.checkin = checkin;

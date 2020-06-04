@@ -24,6 +24,14 @@
         </activity>
 
         <!--Add Other activities like this-->
+        <activity android:name=".CheckInActivity" >
+            <!--Default Intent Filter-->
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!--Add Other activities like this-->
         <activity android:name=".HomeActivity" >
             <!--Default Intent Filter-->
             <intent-filter>
