@@ -24,7 +24,6 @@ public class HomeActivity extends AppCompatActivity {
 
     UserService userService;
     int cin;
-    String d;
     TextView first_name_txt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +35,8 @@ public class HomeActivity extends AppCompatActivity {
 
         userService = APIUtils.getUserService();
 
-        this.d = getIntent().getExtras().getString("cin");
+        this.cin = Integer.valueOf(getIntent().getExtras().getString("cin"));
 
-        this.cin = Integer.valueOf(d);
         getUserInfo(this.cin);
     }
 
@@ -57,9 +55,6 @@ public class HomeActivity extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful()){
                     first_name_txt.setText("Hello " + response.body().get_first_name());
-
-               /*     list = response.body();
-                    listView.setAdapter(new UserAdapter(MainActivity.this, R.layout.list_user, list));*/
                }
             }
 
