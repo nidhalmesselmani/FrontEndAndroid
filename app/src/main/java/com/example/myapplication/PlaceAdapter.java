@@ -47,6 +47,9 @@ public class PlaceAdapter  extends ArrayAdapter<Place>{
         else if (places.get(pos).getContaminated() == 'S') {
             placeTxt.setText(String.format("%s is probably contaminated", places.get(pos).getName()));
         }
+        else{
+            placeTxt.setText(String.format("%s is not contaminated", places.get(pos).getName()));
+        }
 
 
 

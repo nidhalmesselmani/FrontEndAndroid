@@ -44,7 +44,9 @@ public class OverviewActivity extends AppCompatActivity {
                     list_temp = response.body();
                     for (Place p : list_temp) {
                         // do something with object
-                        list.add(p);
+                        if(p.getContaminated() == 'Y' || p.getContaminated() == 'S') {
+                            list.add(p);
+                        }
                     }
                     listView.setAdapter(new PlaceAdapter(OverviewActivity.this, R.layout.list_place, list));
 
