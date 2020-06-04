@@ -6,58 +6,58 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/cov4"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="241dp">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <EditText
         android:id="@+id/input_cin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="please enter your cin"
+        android:layout_width="350dp"
+        android:layout_height="49dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rounded_editext"
+        android:ellipsize="start"
+        android:foregroundGravity="center"
+        android:gravity="center_horizontal"
+        android:hint="Please enter your CIN #"
         android:inputType="number"
-        android:paddingTop="200dp" />
+        android:paddingTop="10dp"
+        android:textColorHint="#A3000000" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="83dp" />
     <Button
         android:id="@+id/submit"
-        android:layout_width="wrap_content"
+        android:layout_width="144dp"
         android:layout_height="wrap_content"
         android:onClick="onSubmit"
-        android:text="Button" />
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/btn_rounded"
+        android:foregroundGravity="center"
+        android:gravity="center|center_horizontal"
+        android:text="SUBMIT"
+        android:textAlignment="center"
+        android:textIsSelectable="false"
+        android:textStyle="normal|bold"
+        />
 
-
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent">
 
-    </com.google.android.material.appbar.AppBarLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include
         android:id="@+id/btnGePlacesList"
         layout="@layout/content_main"
         android:visibility="invisible" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
-<!--
-    <Button
-        android:id="@+id/btnGetPlacesList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="submit"
-        android:text="Button" />-->
-
-
 
 
 </LinearLayout>

@@ -86,7 +86,7 @@ public class ReportActivity extends AppCompatActivity {
         placeCheckinsService = APIUtils.getPlaceCheckinService();
         checkinTimePicker = (TimePicker)  findViewById(R.id.checkinTimePicker);
         checkoutTimePicker = (TimePicker)  findViewById(R.id.checkoutTimePicker);
-        contanimated = (TextView) findViewById(R.id.contanimatedtxt);
+       // contanimated = (TextView) findViewById(R.id.contanimatedtxt);
 
         this.cin = Integer.valueOf(getIntent().getExtras().getString("cin"));
 

@@ -30,8 +30,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         // btnGePlacesList = (Button) findViewById(R.id.btnGetPlacesList);
         // placeService = APIUtils.getPlaceService();
         // listView = (ListView) findViewById(R.id.listView);

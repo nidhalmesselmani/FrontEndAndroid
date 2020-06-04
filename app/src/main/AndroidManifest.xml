@@ -24,7 +24,8 @@
         </activity>
 
         <!--Add Other activities like this-->
-        <activity android:name=".CheckInActivity" >
+        <activity android:name=".CheckInActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <!--Default Intent Filter-->
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -33,7 +34,9 @@
 
 
         <!--Add Other activities like this-->
-        <activity android:name=".ReportActivity" >
+        <activity android:name=".ReportActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            >
             <!--Default Intent Filter-->
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -41,7 +44,8 @@
         </activity>
 
         <!--Add Other activities like this-->
-        <activity android:name=".HomeActivity" >
+        <activity android:name=".HomeActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <!--Default Intent Filter-->
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
