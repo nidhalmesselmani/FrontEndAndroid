@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.model.User;
 import com.example.myapplication.remote.APIUtils;
 import com.example.myapplication.remote.UserService;
+import com.google.android.material.snackbar.Snackbar;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,7 +28,7 @@ public class HomeActivity  extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        first_name_txt = (TextView) findViewById(R.id.first_name);
+
         this.cin = Integer.valueOf(getIntent().getExtras().getString("cin"));
         userService = APIUtils.getUserService();
         getUserInfo(this.cin);
@@ -46,7 +47,10 @@ public class HomeActivity  extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful()){
                     current_user = response.body();
-                    first_name_txt.setText("Hello " + response.body().get_first_name());
+                    //first_name_txt.setText("Hello " + response.body().get_first_name());
+                    View view =  getWindow().getDecorView().findViewById(android.R.id.content);
+                    Snackbar mySnackbar = Snackbar.make(view, "Hi " + current_user.get_first_name(), 7000);
+                    mySnackbar.show();
                 }
             }
 
@@ -68,7 +72,7 @@ public class HomeActivity  extends AppCompatActivity {
 
     public void GoReport(View view) {
 
-        Intent intent = new Intent(HomeActivity.this, CheckInActivity.class);
+        Intent intent = new Intent(HomeActivity.this, ReportActivity.class);
         intent.putExtra("cin",this.current_user.get_cin());
         startActivity(intent);
     }

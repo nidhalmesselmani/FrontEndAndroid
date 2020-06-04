@@ -30,11 +30,12 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CheckInActivity extends AppCompatActivity {
+public class ReportActivity extends AppCompatActivity {
 
 
     UserService userService;
@@ -70,7 +71,7 @@ public class CheckInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_checkin);
+        setContentView(R.layout.activity_report);
 
 
         first_name_txt = (TextView) findViewById(R.id.first_name);
@@ -105,7 +106,7 @@ public class CheckInActivity extends AppCompatActivity {
                 else
                 {
 
-                 //   Toast.makeText( getApplicationContext(),  parent.getItemAtPosition(position) +" is selected",  Toast.LENGTH_SHORT).show();
+                    //   Toast.makeText( getApplicationContext(),  parent.getItemAtPosition(position) +" is selected",  Toast.LENGTH_SHORT).show();
 
                     get_cities_by_governorate_id(governorates_ids.get(position - 1));
                 }
@@ -170,43 +171,28 @@ public class CheckInActivity extends AppCompatActivity {
 
     }
 
-   private void get_place(int place_id) {
+    private void get_place(int place_id) {
 
 
-       final Call<Place> call = placeService.getPlace(place_id);
+        final Call<Place> call = placeService.getPlace(place_id);
 
-       call.enqueue(new Callback<Place>() {
-           @Override
-           public void onResponse(Call<Place> call, Response<Place> response) {
-               if(response.isSuccessful()){
-                   View view =  getWindow().getDecorView().findViewById(android.R.id.content);
-                   if(response.body().getContaminated().equals('Y')) {
-                       // contanimated.setText("this place is contaminated");
-                       Snackbar mySnackbar = Snackbar.make(view, "this place is contaminated", 7000);
-                       mySnackbar.show();
-                   }
-                       else if (response.body().getContaminated().equals('S')) {
-                      // contanimated.setText("this place is probably contaminated");
-                       Snackbar mySnackbar = Snackbar.make(view, "this place is probably contaminated", 7000);
-                       mySnackbar.show();
-                   } else {
-                     //  contanimated.setText("this place is not contaminated");
-                       Snackbar mySnackbar = Snackbar.make(view, "this place is not contaminated", 7000);
-                       mySnackbar.show();
-                   }
-                       current_place = response.body();
-                      // contanimated.setVisibility(View.VISIBLE);
+        call.enqueue(new Callback<Place>() {
+            @Override
+            public void onResponse(Call<Place> call, Response<Place> response) {
+                if(response.isSuccessful()){
 
-               }
-           }
+                    current_place = response.body();
 
-           @Override
-           public void onFailure(Call<Place> call, Throwable t) {
-               Log.e("ERROR: ", t.getMessage());
-           }
-       });
+                }
+            }
 
-   }
+            @Override
+            public void onFailure(Call<Place> call, Throwable t) {
+                Log.e("ERROR: ", t.getMessage());
+            }
+        });
+
+    }
 
     private  void get_places_by_city_id(int city_id) {
 
@@ -295,7 +281,7 @@ public class CheckInActivity extends AppCompatActivity {
             public void onResponse(Call<List<Governorate>> call, Response<List<Governorate>> response) {
                 if(response.isSuccessful()){
                     listGovernorates = response.body();
-                   // ArrayList<String> arrayList = new ArrayList<>();
+                    // ArrayList<String> arrayList = new ArrayList<>();
                     for(Governorate g : listGovernorates){
                         arrayList.add(g.getName());
                         governorates_ids.add(g.getId());
@@ -323,7 +309,7 @@ public class CheckInActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     current_user = response.body();
                     first_name_txt.setText("Hello " + response.body().get_first_name());
-               }
+                }
             }
 
             @Override
@@ -363,4 +349,33 @@ public class CheckInActivity extends AppCompatActivity {
         });
 
     }
-}
+
+    public void onReport(final View view) {
+
+        Call<ResponseBody> call =   placeService.reportPlace(current_place.getId());
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if(response.isSuccessful()){
+
+
+                    Snackbar mySnackbar = Snackbar.make(view, "report has been submited", 7000);
+                    mySnackbar.show();
+
+
+
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.e("ERROR: ", t.getMessage());
+            }
+        });
+
+
+
+    }
+    }
+
