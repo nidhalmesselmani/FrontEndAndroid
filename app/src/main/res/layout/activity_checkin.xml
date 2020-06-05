@@ -1,135 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
 
-    <TextView
-        android:id="@+id/first_name"
-        android:layout_width="84dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="24dp"
-        android:text="Loading"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/governates_spinner"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:prompt="@string/app_name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.126"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.138" />
+        android:orientation="horizontal">
 
-    <Spinner
-        android:id="@+id/cities_spinner"
-        android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/governates_spinner"
+            android:layout_width="205dp"
+            android:layout_height="wrap_content"
+            android:prompt="@string/app_name" />
+
+        <Spinner
+            android:id="@+id/cities_spinner"
+            android:layout_width="205dp"
+            android:layout_height="wrap_content"
+            android:prompt="@string/app_name"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:prompt="@string/app_name"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.702"
-        app:layout_constraintStart_toEndOf="@+id/governates_spinner"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.138" />
+        android:layout_below="@+id/LinearLayout1"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <Spinner
-        android:id="@+id/places_spinner"
-        android:layout_width="125dp"
-        android:layout_height="22dp"
-        android:prompt="@string/app_name"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/cities_spinner"
-        app:layout_constraintHorizontal_bias="0.625"
-        app:layout_constraintStart_toEndOf="@+id/governates_spinner"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.241" />
+        <Spinner
+            android:id="@+id/places_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:gravity="center_horizontal"
+            android:prompt="@string/app_name"
+            android:visibility="invisible" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            android:foregroundGravity="center"
+            android:paddingTop="100dp">
 
-    <TimePicker
-        android:id="@+id/checkinTimePicker"
-        android:layout_width="258dp"
-        android:layout_height="329dp"
-        android:scaleX="0.5"
-        android:scaleY="0.5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/checkoutTimePicker"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/places_spinner"
-        app:layout_constraintVertical_bias="0.167" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TimePicker
-        android:id="@+id/checkoutTimePicker"
-        android:layout_width="265dp"
-        android:layout_height="326dp"
-        android:scaleX="0.5"
-        android:scaleY="0.5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/places_spinner"
-        app:layout_constraintVertical_bias="0.179" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/submit"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/LinearLayout3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="104dp"
-        android:onClick="onSubmitTime"
-        android:text="Submit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_below="@+id/LinearLayout2"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/LinearLayout4"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="205dp"
+                android:layout_height="wrap_content"
+                android:foregroundGravity="center"
+                android:gravity="center"
+                android:text="Check-in Time" />
+
+            <TimePicker
+                android:id="@+id/checkinTimePicker"
+                android:layout_width="205dp"
+                android:layout_height="329dp"
+                android:scaleX="0.5"
+                android:scaleY="0.5" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="29dp">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayout5"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="205dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Check-out Time" />
+
+            <TimePicker
+                android:id="@+id/checkoutTimePicker"
+                android:layout_width="205dp"
+                android:layout_height="329dp"
+                android:scaleX="0.5"
+                android:scaleY="0.5" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="29dp">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/LinearLayout6"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginLeft="92dp"
-        android:text="Check-in Time"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.39" />
+        android:orientation="horizontal"
+        android:layout_below="@+id/LinearLayout3"
+        android:gravity="center"
+        >
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="80dp"
-        android:layout_marginRight="80dp"
-        android:text="Check-out Time"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.39" />
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onSubmitTime"
+            android:text="Submit" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/contanimatedtxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="this place is"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.464"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/first_name"
-        app:layout_constraintVertical_bias="0.268" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+</RelativeLayout>

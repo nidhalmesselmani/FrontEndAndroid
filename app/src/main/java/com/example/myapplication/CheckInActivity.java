@@ -84,7 +84,7 @@ public class CheckInActivity extends AppCompatActivity {
         placeCheckinsService = APIUtils.getPlaceCheckinService();
         checkinTimePicker = (TimePicker)  findViewById(R.id.checkinTimePicker);
         checkoutTimePicker = (TimePicker)  findViewById(R.id.checkoutTimePicker);
-        contanimated = (TextView) findViewById(R.id.contanimatedtxt);
+
 
         this.cin = Integer.valueOf(getIntent().getExtras().getString("cin"));
 
@@ -321,7 +321,7 @@ public class CheckInActivity extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful()){
                     current_user = response.body();
-                    first_name_txt.setText("Hello " + response.body().get_first_name());
+
                }
             }
 
