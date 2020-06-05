@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -72,7 +71,6 @@ public class CheckInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkin);
 
-        first_name_txt = (TextView) findViewById(R.id.first_name);
         governates_spinner = (Spinner) findViewById(R.id.governates_spinner);
         cities_spinner = (Spinner) findViewById(R.id.cities_spinner);
         places_spinner = (Spinner) findViewById(R.id.places_spinner);
@@ -88,7 +86,6 @@ public class CheckInActivity extends AppCompatActivity {
 
         this.cin = Integer.valueOf(getIntent().getExtras().getString("cin"));
 
-        Toast.makeText( getApplicationContext(), "Welcome",  Toast.LENGTH_SHORT).show();
         getUserInfo(this.cin);
         getGovernorates();
         governates_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
@@ -96,15 +93,13 @@ public class CheckInActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                if (parent.getItemAtPosition(position).equals("choose governorate"))
+                if (parent.getItemAtPosition(position).equals("Choose Governorate"))
                 {
                     //do nothing.
-                    Toast.makeText( getApplicationContext(), "do nothing",  Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
 
-                 //   Toast.makeText( getApplicationContext(),  parent.getItemAtPosition(position) +" is selected",  Toast.LENGTH_SHORT).show();
 
                     get_cities_by_governorate_id(governorates_ids.get(position - 1));
                 }
@@ -122,16 +117,12 @@ public class CheckInActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                if (parent.getItemAtPosition(position).equals("choose cities"))
+                if (parent.getItemAtPosition(position).equals("Choose City"))
                 {
-                    //do nothing.
-                    Toast.makeText( getApplicationContext(), "do nothing",  Toast.LENGTH_SHORT).show();
+
                 }
                 else
                 {
-
-                    //   Toast.makeText( getApplicationContext(),  parent.getItemAtPosition(position) +" is selected",  Toast.LENGTH_SHORT).show();
-
                     get_places_by_city_id(cities_ids.get(position - 1));
                 }
             }
@@ -147,7 +138,7 @@ public class CheckInActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                if (parent.getItemAtPosition(position).equals("choose places"))
+                if (parent.getItemAtPosition(position).equals("Choose Place"))
                 {
 
 
@@ -155,7 +146,6 @@ public class CheckInActivity extends AppCompatActivity {
                 else
                 {
 
-                    //   Toast.makeText( getApplicationContext(),  parent.getItemAtPosition(position) +" is selected",  Toast.LENGTH_SHORT).show();
 
                     get_place(places_ids.get(position - 1));
                 }
@@ -213,7 +203,7 @@ public class CheckInActivity extends AppCompatActivity {
         final Call<List<Place>> call = placeService.getPlacesByCityId(city_id);
         final ArrayList<String> arrayList = new ArrayList<>();
 
-        arrayList.add("choose places");
+        arrayList.add("Choose Place");
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -243,12 +233,11 @@ public class CheckInActivity extends AppCompatActivity {
 
 
     private  void get_cities_by_governorate_id(int governate_id) {
-        Toast.makeText( getApplicationContext(),  governate_id +" is selected",  Toast.LENGTH_SHORT).show();
         cities_spinner.setVisibility(View.VISIBLE);
         final Call<List<City>> call = cityService.getCityByGovernorateId(governate_id);
         final ArrayList<String> arrayList = new ArrayList<>();
 
-        arrayList.add("choose cities");
+        arrayList.add("Choose City");
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -284,7 +273,7 @@ public class CheckInActivity extends AppCompatActivity {
 
         final Call<List<Governorate>> call = governorateService.getGovernorates();
         final ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add("choose governorate");
+        arrayList.add("Choose Governorate");
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Now apply the adapter to spinner

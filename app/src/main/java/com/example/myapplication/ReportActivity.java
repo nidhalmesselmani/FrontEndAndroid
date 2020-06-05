@@ -9,8 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
-
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -72,9 +70,6 @@ public class ReportActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
-
-
-        first_name_txt = (TextView) findViewById(R.id.first_name);
         governates_spinner = (Spinner) findViewById(R.id.governates_spinner);
         cities_spinner = (Spinner) findViewById(R.id.cities_spinner);
         places_spinner = (Spinner) findViewById(R.id.places_spinner);
@@ -90,7 +85,6 @@ public class ReportActivity extends AppCompatActivity {
 
         this.cin = Integer.valueOf(getIntent().getExtras().getString("cin"));
 
-        Toast.makeText( getApplicationContext(), "Welcome",  Toast.LENGTH_SHORT).show();
         getUserInfo(this.cin);
         getGovernorates();
         governates_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
@@ -101,12 +95,10 @@ public class ReportActivity extends AppCompatActivity {
                 if (parent.getItemAtPosition(position).equals("choose governorate"))
                 {
                     //do nothing.
-                    Toast.makeText( getApplicationContext(), "do nothing",  Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
 
-                    //   Toast.makeText( getApplicationContext(),  parent.getItemAtPosition(position) +" is selected",  Toast.LENGTH_SHORT).show();
 
                     get_cities_by_governorate_id(governorates_ids.get(position - 1));
                 }
@@ -127,13 +119,9 @@ public class ReportActivity extends AppCompatActivity {
                 if (parent.getItemAtPosition(position).equals("choose cities"))
                 {
                     //do nothing.
-                    Toast.makeText( getApplicationContext(), "do nothing",  Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
-
-                    //   Toast.makeText( getApplicationContext(),  parent.getItemAtPosition(position) +" is selected",  Toast.LENGTH_SHORT).show();
-
                     get_places_by_city_id(cities_ids.get(position - 1));
                 }
             }
@@ -156,9 +144,6 @@ public class ReportActivity extends AppCompatActivity {
                 }
                 else
                 {
-
-                    //   Toast.makeText( getApplicationContext(),  parent.getItemAtPosition(position) +" is selected",  Toast.LENGTH_SHORT).show();
-
                     get_place(places_ids.get(position - 1));
                 }
             }
@@ -230,7 +215,6 @@ public class ReportActivity extends AppCompatActivity {
 
 
     private  void get_cities_by_governorate_id(int governate_id) {
-        Toast.makeText( getApplicationContext(),  governate_id +" is selected",  Toast.LENGTH_SHORT).show();
         cities_spinner.setVisibility(View.VISIBLE);
         final Call<List<City>> call = cityService.getCityByGovernorateId(governate_id);
         final ArrayList<String> arrayList = new ArrayList<>();
@@ -308,7 +292,7 @@ public class ReportActivity extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful()){
                     current_user = response.body();
-                    first_name_txt.setText("Hello " + response.body().get_first_name());
+
                 }
             }
 

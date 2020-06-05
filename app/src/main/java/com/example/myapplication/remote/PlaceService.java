@@ -21,6 +21,8 @@ public interface PlaceService {
     @GET("places/")
     Call<List<Place>> getPlaces();
 
+
+
     @GET("getContanimatedPlaces/")
     Call<List<Place>> getContanimatedPlaces();
 

@@ -7,9 +7,11 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.model.City;
 import com.example.myapplication.model.Place;
 import com.example.myapplication.model.User;
 import com.example.myapplication.remote.APIUtils;
+import com.example.myapplication.remote.CityService;
 import com.example.myapplication.remote.PlaceService;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -34,7 +36,7 @@ public class OverviewActivity extends AppCompatActivity {
         placeService  = APIUtils.getPlaceService();
         listView = (ListView) findViewById(R.id.listView);
         Call<List<Place>> call = placeService.getPlaces();
-
+        final CityService cityService = APIUtils.getCityService();
         call.enqueue(new Callback<List<Place>>() {
             @Override
             public void onResponse(Call<List<Place>> call, Response<List<Place>> response) {
@@ -42,12 +44,31 @@ public class OverviewActivity extends AppCompatActivity {
                     List<Place> list_temp = new ArrayList<Place>();
 
                     list_temp = response.body();
+
                     for (Place p : list_temp) {
                         // do something with object
                         if(p.getContaminated() == 'Y' || p.getContaminated() == 'S') {
                             list.add(p);
+
+                            Call<City> call1 = cityService.getCityById(p.getCityId());
+                            call1.enqueue(new Callback<City>() {
+                                @Override
+                                public void onResponse(Call<City> call, Response<City> response) {
+                                    if (response.isSuccessful()) {
+
+                                    }
+                                }
+                                @Override
+                                public void onFailure(Call<City> call, Throwable t) {
+                                    Log.e("ERROR: ", t.getMessage());
+                                }
+                            });
                         }
                     }
+
+
+
+
                     listView.setAdapter(new PlaceAdapter(OverviewActivity.this, R.layout.list_place, list));
 
 

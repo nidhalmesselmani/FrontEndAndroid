@@ -1,6 +1,8 @@
 package com.example.myapplication.remote;
 
 import com.example.myapplication.model.City;
+import com.example.myapplication.model.Place;
+
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -15,6 +17,9 @@ public interface CityService {
 
     @GET("city_by_governorate_id/")
     Call<List<City>> getCityByGovernorateId(@Query("governorate_id") int governorate_id);
+    @GET("get_city_by_id/")
+    Call<City> getCityById(@Query("city_id") int city_id);
+
 
     @POST("cities/")
     Call<City> addCity(@Body City city);
